@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Clear Flow synthetic mixed-traffic scenario. Vehicle parameters are illustrative, not field-calibrated. -->
+<routes>
+    <vType id="two_wheeler" vClass="motorcycle" length="2.0" width="0.8" accel="2.2" decel="4.5" sigma="0.6" tau="0.8" minGap="0.5" maxSpeed="14.0" speedFactor="0.90"/>
+    <vType id="auto_rickshaw" vClass="passenger" length="3.0" width="1.45" accel="1.4" decel="4.0" sigma="0.7" tau="0.9" minGap="0.4" maxSpeed="12.0" speedFactor="0.82"/>
+    <vType id="car" vClass="passenger" length="4.4" width="1.8" accel="2.0" decel="4.5" sigma="0.5" tau="1.0" minGap="1.0" maxSpeed="16.0" speedFactor="0.95"/>
+    <vType id="bus" vClass="bus" length="10.0" width="2.5" accel="1.0" decel="4.0" sigma="0.3" tau="1.2" minGap="2.0" maxSpeed="12.0" speedFactor="0.85"/>
+    <vType id="truck" vClass="truck" length="7.0" width="2.4" accel="1.0" decel="4.5" sigma="0.4" tau="1.2" minGap="1.5" maxSpeed="12.0" speedFactor="0.85"/>
+
+    <route id="route_ns" edges="n_t t_s"/>
+    <route id="route_we" edges="w_t t_e"/>
+
+    <!-- Per-second probabilities are deliberately simple for a reproducible starter experiment. -->
+    <flow id="ns_two_wheeler" type="two_wheeler" route="route_ns" begin="0" end="3600" probability="0.12" departLane="best" departSpeed="max"/>
+    <flow id="ns_auto" type="auto_rickshaw" route="route_ns" begin="0" end="3600" probability="0.045" departLane="best" departSpeed="max"/>
+    <flow id="ns_car" type="car" route="route_ns" begin="0" end="3600" probability="0.065" departLane="best" departSpeed="max"/>
+    <flow id="ns_bus" type="bus" route="route_ns" begin="0" end="3600" probability="0.008" departLane="best" departSpeed="max"/>
+    <flow id="ns_truck" type="truck" route="route_ns" begin="0" end="3600" probability="0.012" departLane="best" departSpeed="max"/>
+
+    <flow id="we_two_wheeler" type="two_wheeler" route="route_we" begin="0" end="3600" probability="0.15" departLane="best" departSpeed="max"/>
+    <flow id="we_auto" type="auto_rickshaw" route="route_we" begin="0" end="3600" probability="0.055" departLane="best" departSpeed="max"/>
+    <flow id="we_car" type="car" route="route_we" begin="0" end="3600" probability="0.075" departLane="best" departSpeed="max"/>
+    <flow id="we_bus" type="bus" route="route_we" begin="0" end="3600" probability="0.010" departLane="best" departSpeed="max"/>
+    <flow id="we_truck" type="truck" route="route_we" begin="0" end="3600" probability="0.015" departLane="best" departSpeed="max"/>
+</routes>

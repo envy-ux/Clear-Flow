@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: >-
+  If you use Clear Flow, cite this software release and also acknowledge the
+  SUMO-RL upstream project described in UPSTREAM_CITATION.bib and UPSTREAM_NOTICES.md.
+title: "Clear Flow: Indian Traffic Intelligence and Adaptive Signal Optimization"
+type: software
+version: 0.1.0
+date-released: 2026-10-20
+license: MIT
+abstract: >-
+  Clear Flow is an experimental reinforcement-learning framework for studying
+  traffic-signal control in synthetic heterogeneous-traffic scenarios. It builds
+  on the SUMO-RL framework and includes an illustrative mixed-vehicle scenario
+  and a class-weighted congestion reward. It is not a field-calibrated traffic
+  controller and has not been validated for live road operation.

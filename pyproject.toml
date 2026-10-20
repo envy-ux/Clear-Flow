@@ -1,0 +1,101 @@
+[build-system]
+requires = ["setuptools >= 77.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clear-flow"
+description = "An extensible reinforcement-learning toolkit for Indian mixed-traffic signal optimization using SUMO."
+readme = "README.md"
+requires-python = ">= 3.9"
+authors = [{ name = "Clear Flow contributors" }]
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["Clear Flow", "Indian traffic", "Reinforcement Learning", "Traffic Signal Control", "SUMO", "PettingZoo", "Gymnasium"]
+dependencies = [
+    'gymnasium>=0.28',
+    'pettingzoo>=1.24.3',
+    'numpy',
+    'pandas',
+    'pillow',
+    'sumolib>=1.14.0',
+    'traci>=1.14.0'
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+# Update dependencies in `all` if any are added or removed
+rendering = ["pyvirtualdisplay"]
+all = [
+   "pyvirtualdisplay",
+]
+testing = ["pytest>=7.4,<9"]
+
+[project.urls]
+Homepage = "https://github.com/envy-ux/Clear-Flow"
+Repository = "https://github.com/envy-ux/Clear-Flow"
+Issues = "https://github.com/envy-ux/Clear-Flow/issues"
+
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["clear_flow", "clear_flow.*"]
+
+[tool.setuptools.package-data]
+clear_flow = ["nets/**/*.xml", "nets/**/*.sumocfg", "nets/**/*.png", "nets/**/*.pdf"]
+
+# Linters and Test tools #######################################################
+
+[tool.black]
+line-length = 127
+target-version = ['py39', 'py310', 'py311', 'py312']
+include = '\.pyi?$'
+
+[tool.isort]
+atomic = true
+profile = "black"
+src_paths = ["clear_flow", "tests", "docs/scripts"]
+extra_standard_library = ["typing_extensions"]
+indent = 4
+lines_after_imports = 2
+multi_line_output = 3
+
+[tool.pyright]
+include = ["clear_flow/**", "tests/**"]
+exclude = ["**/node_modules", "**/__pycache__"]
+strict = []
+
+typeCheckingMode = "off"
+pythonVersion = "3.9"
+pythonPlatform = "All"
+typeshedPath = "typeshed"
+enableTypeIgnoreComments = true
+
+# This is required as the CI pre-commit does not download the module (i.e. numpy, pygame)
+#   Therefore, we have to ignore missing imports
+reportMissingImports = "none"
+# Some modules are missing type stubs, which is an issue when running pyright locally
+reportMissingTypeStubs = false
+# For warning and error, will raise an error when
+reportInvalidTypeVarUse = "none"
+
+# reportUnknownMemberType = "warning"  # -> raises warnings
+# reportUnknownParameterType = "warning"  # -> raises warnings
+# reportUnknownVariableType = "warning"  # -> raises warnings
+# reportUnknownArgumentType = "warning"  # -> raises warnings
+reportGeneralTypeIssues = "none"  # -> commented out raises 489 errors
+reportArgumentType = "none"
+reportUntypedFunctionDecorator = "none"  # -> pytest.mark.parameterize issues
+
+reportOptionalMemberAccess = "none" # -> commented out raises warnings
+reportPrivateImportUsage = "warning" # -> this raises warnings because we use not exported modules from gym (wrappers)
+
+reportPrivateUsage = "warning"
+reportUnboundVariable = "warning"
+reportCallIssue = "warning"
+reportAttributeAccessIssue = "warning"
+
+[tool.pytest.ini_options]
+filterwarnings = ['ignore:.*The environment .* is out of date.*']
+# filterwarnings = ['ignore:.*step API.*:DeprecationWarning']

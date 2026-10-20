@@ -1,0 +1,25 @@
+name: Feature request
+description: Suggest an improvement to Clear Flow.
+title: "[Feature]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: What problem would this feature address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed approach
+      description: Describe the solution or behavior you have in mind.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: How should it be evaluated?
+      description: Suggest tests, metrics, or example scenarios that could validate the improvement.
+    validations:
+      required: false

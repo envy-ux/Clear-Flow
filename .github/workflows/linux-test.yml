@@ -1,0 +1,34 @@
+name: Clear Flow tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  linux-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11', '3.12']
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        sudo add-apt-repository ppa:sumo/stable
+        sudo apt-get update
+        sudo apt-get install sumo sumo-tools sumo-doc
+        python -m pip install --upgrade pip pytest
+        python -m pip install -e '.[all,testing]'
+    - name: Full Python tests
+      run: |
+        export SUMO_HOME="/usr/share/sumo"
+        export LIBSUMO_AS_TRACI=1
+        pytest ./tests/pz_test.py
+        pytest ./tests/gym_test.py
+        pytest ./tests/test_clear_flow_reward.py

@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible issue with Clear Flow.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please search existing issues first. Do not include sensitive data or private infrastructure information.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe the problem and expected behavior.
+      placeholder: A clear, concise description of the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Include the command, scenario, and any minimal input needed to reproduce the issue.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include OS, Python version, SUMO version, Clear Flow revision, and relevant dependency versions.
+      placeholder: Windows 11 / Python 3.12 / SUMO ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or traceback
+      description: Remove secrets and personal or sensitive information before posting.
+      render: text
+    validations:
+      required: false

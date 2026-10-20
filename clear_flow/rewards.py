@@ -3,6 +3,7 @@
 The reward below is a research baseline, not a validated traffic-engineering policy.
 It combines class-weighted waiting, normalized incoming queues and downstream occupancy.
 """
+
 from __future__ import annotations
 
 from typing import Any
@@ -62,12 +63,7 @@ def clear_flow_mixed_traffic(signal: Any) -> float:
     downstream_blockage = max(downstream_density, default=0.0)
 
     # Costs are deliberately transparent so experiments can tune/ablate terms.
-    cost = (
-        class_weighted_delay
-        + 1.8 * mean_queue
-        + 2.5 * (worst_queue**2)
-        + 1.5 * (downstream_blockage**2)
-    )
+    cost = class_weighted_delay + 1.8 * mean_queue + 2.5 * (worst_queue**2) + 1.5 * (downstream_blockage**2)
 
     previous_cost = getattr(signal, "_clear_flow_previous_cost", cost)
     signal._clear_flow_previous_cost = cost

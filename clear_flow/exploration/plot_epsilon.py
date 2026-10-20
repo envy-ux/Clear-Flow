@@ -11,7 +11,7 @@ if __name__ == "__main__":
     prs.add_argument("-d", dest="decay", type=float, required=True, help="Epsilon\n")
     args = prs.parse_args()
 
-    plt.plot([i for i in range(0, 20000, 5)], [args.epsilon * args.decay**i for i in range(0, 4000)])
+    plt.plot([*range(0, 20000, 5)], [args.epsilon * args.decay**i for i in range(0, 4000)])
 
     plt.grid()
     plt.show()

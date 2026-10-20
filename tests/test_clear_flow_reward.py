@@ -1,4 +1,5 @@
 """Unit tests for the Clear Flow mixed-traffic reward."""
+
 from types import SimpleNamespace
 
 from clear_flow.rewards import clear_flow_mixed_traffic
@@ -12,7 +13,9 @@ class FakeTrafficSignal:
         self.queues = [0.7, 0.4]
         self.downstream = [0.3, 0.2]
         self.sumo = SimpleNamespace(
-            lane=SimpleNamespace(getLastStepVehicleIDs=lambda lane: {"north_in": ["bus_1", "bike_1"], "west_in": ["car_1"]}[lane]),
+            lane=SimpleNamespace(
+                getLastStepVehicleIDs=lambda lane: {"north_in": ["bus_1", "bike_1"], "west_in": ["car_1"]}[lane]
+            ),
             vehicle=SimpleNamespace(
                 getTypeID=lambda vehicle_id: self.types[vehicle_id],
                 getAccumulatedWaitingTime=lambda vehicle_id: self.waiting[vehicle_id],

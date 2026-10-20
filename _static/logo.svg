@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300">
+  <rect width="1200" height="300" rx="26" fill="#102B3F"/>
+  <rect x="34" y="34" width="232" height="232" rx="26" fill="#173E55"/>
+  <path d="M92 68 V232 M150 68 V232 M208 68 V232" stroke="#D9E6E8" stroke-width="5" stroke-linecap="round" stroke-dasharray="14 15"/>
+  <path d="M63 150 H237" stroke="#D9E6E8" stroke-width="5" stroke-linecap="round" stroke-dasharray="14 15"/>
+  <path d="M75 225 C103 225 109 190 138 190 S176 111 205 111" fill="none" stroke="#43D6B2" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="75" cy="225" r="9" fill="#43D6B2"/><circle cx="205" cy="111" r="9" fill="#43D6B2"/>
+  <text x="310" y="142" font-family="Inter, Arial, sans-serif" font-size="74" font-weight="800" fill="#F5FAFB" letter-spacing="3">CLEAR FLOW</text>
+  <text x="314" y="198" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="500" fill="#B7CFD8" letter-spacing="3">INDIAN TRAFFIC INTELLIGENCE</text>
+  <rect x="314" y="225" width="118" height="7" rx="3.5" fill="#43D6B2"/>
+  <rect x="442" y="225" width="55" height="7" rx="3.5" fill="#F0B84A"/>
+</svg>
